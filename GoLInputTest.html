@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Game of life Home</title>
+	</head>
+		<body>
+		<h1>Game of life</h1>
+		<p1>
+		Rule for 0 Neighbors: 
+		<select id = "Rule0">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		Rule for 1 Neighbor: 
+		<select id = "Rule1">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		Rule for 2 Neighbors: 
+		<select id = "Rule2">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		<br>
+		<br>
+		Rule for 3 Neighbors: 
+		<select id = "Rule3">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		Rule for 4 Neighbors: 
+		<select id = "Rule4">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		Rule for 5 Neighbors: 
+		<select id = "Rule5">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		<br>
+		<br>
+		Rule for 6 Neighbors: 
+		<select id = "Rule6">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		Rule for 7 Neighbors: 
+		<select id = "Rule7">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		Rule for 8 Neighbors: 
+		<select id = "Rule8">
+			<option value="N">Nothing</option>
+			<option value="K">Kill</option>
+			<option value="G">Grow</option>
+		</select> 
+		<br>
+		<br>
+		<button onclick = "printRules()">See all rules</button>
+		<script> 
+		function printRules()
+			{
+				var r0 = document.getElementById('Rule0').value; 
+				var r1 = document.getElementById('Rule1').value; 
+				var r2 = document.getElementById('Rule2').value; 
+				var r3 = document.getElementById('Rule3').value; 
+				var r4 = document.getElementById('Rule4').value; 
+				var r5 = document.getElementById('Rule5').value; 
+				var r6 = document.getElementById('Rule6').value; 
+				var r7 = document.getElementById('Rule7').value; 
+				var r8 = document.getElementById('Rule8').value; 
+				window.alert(r0 + r1 + r2 + r3 + r4 + r5 + r6 + r7 + r8);
+			}
+		</script>
+		</p1>
+
+		</body>
+</html>
