@@ -5,12 +5,12 @@
 1. User shall be able to choose from preset patterns for starting cells.
 1. User shall be able to have pseudo-random pattern generation for starting cells.
 1. User shall be able to customize starting cells with drawing on grid.
-1. User shall be able to change number of adjacent alive cells required for a cell to die.
-1. User shall be able to change number of adjacent alive cells required for a cell to survive.
-1. User shall be able to change number of adjacent alive cells required for a cell to be born.
+1. User shall be able to change the number of adjacent alive cells required for a cell to die.
+1. User shall be able to change the number of adjacent alive cells required for a cell to survive.
+1. User shall be able to change the number of adjacent alive cells required for a cell to be born.
 1. User shall be able to set the avatar of each cell to be square.
 1. User shall be able to set the avatar of each cell to be round.
-1. User shall be able to set the avatar of each cell to be triangle.
+1. User shall be able to set the avatar of each cell to be a triangle.
 1. User shall be able to choose the color of the alive cells.
 1. User shall be able to choose the color of the dead cells.
 1. User shall be able to choose the color of the background grid.
