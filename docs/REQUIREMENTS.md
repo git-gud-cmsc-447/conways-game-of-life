@@ -21,8 +21,8 @@
 1. User shall be able to set how many frames they would like to skip (Ex: seeing only every other frame). 
 1. User shall be able to modify the grid starting size for each set of iterations.
 1. There shall be a counter displayed for the number of alive cells.
-1. There shall be a counter displayed for the total  number of cells in the grid.
-1. There shall be a counter displayed for the number of frames that have occured since the beginning of the iteration.
+1. There shall be a counter displayed for the total number of cells in the grid.
+1. There shall be a counter displayed for the number of frames that have occurred since the beginning of the iteration.
 1. User shall be able to toggle if the grid “wraps around” so cells on the border are neighbors with other cells on the opposite border.
 1. The application shall end the game when all cells are dead.
 1. The application shall let the user start a new game.
