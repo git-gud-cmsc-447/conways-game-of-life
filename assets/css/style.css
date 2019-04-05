@@ -76,10 +76,12 @@ canvas {
   color: #222;
   padding: 2px 4px 1px 4px;
   clear: both;
+  visibility: hidden;
 }
 
 .box .info {
   margin: 4px 0;
+  visibility: hidden;
 }
 
 .button {
@@ -93,6 +95,7 @@ canvas {
   padding: 2px 6px 5px 6px;
   margin: 0 10px 0 0;
   float: left;
+  visibility: hidden;
 }
 
 .button a {
@@ -148,6 +151,7 @@ canvas {
   color: #222222;
   font-size: 12px;
   padding: 6px;
+  visibility: hidden;
 }
 
 #footer a {
