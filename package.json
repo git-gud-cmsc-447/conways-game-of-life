@@ -1,0 +1,59 @@
+{
+  "name": "way-of-life",
+  "version": "0.2.0",
+  "description": "Conway's game of life",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/blaze33/way-of-life.git"
+  },
+  "homepage": "https://blaze33.github.io/way-of-life/",
+  "bugs": {
+    "url": "https://github.com/blaze33/way-of-life/issues"
+  },
+  "main": "src/js/index.js",
+  "scripts": {
+    "demo": "webpack --config conf/webpack.config.demo.js -p --env production",
+    "lab": "webpack --config conf/webpack.config.embed.js -p --env production",
+    "build": "npm run demo && npm run lab",
+    "watch": "webpack --config conf/webpack.config.demo.js --watch",
+    "serve": "webpack-dev-server --config conf/webpack.config.demo.js --open",
+    "serveLab": "webpack-dev-server --config conf/webpack.config.embed.js --open",
+    "test": "standard src/**/*.js conf/webpack.config.*.js",
+    "fix": "standard src/**/*.js conf/webpack.config.*.js --fix"
+  },
+  "keywords": [
+    "conway",
+    "game",
+    "game of life"
+  ],
+  "author": {
+    "name": "Maxime Rouyrre",
+    "url": "http://www.openbloc.fr/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.4",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "glob": "^7.1.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.29.0",
+    "image-webpack-loader": "^3.3.1",
+    "node-sass": "latest",
+    "normalize.css": "^7.0.0",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "query-string": "^5.0.0",
+    "sass-loader": "^6.0.6",
+    "standard": "^10.0.2",
+    "style-loader": "^0.18.2",
+    "surface": "github:blaze33/surface",
+    "wasm-loader": "^1.0.0",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.5.1"
+  },
+  "dependencies": {}
+}
