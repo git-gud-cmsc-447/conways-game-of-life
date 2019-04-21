@@ -12,6 +12,7 @@ class Renderer {
     this.fpsNode = options.fpsNode || false
     this.strokeStyle = options.strokeStyle || 'rgba(255,118,5,0.5)'
     this.fillStyle = options.fillStyle || 'rgba(222,122,39,0.5)'
+    this.shape = 'triangle'
 
     // renderer variables
     this.play = false
@@ -42,13 +43,33 @@ class Renderer {
         if (this.engine.cellSafe(i, j)) {
           const jPx = this.pixelsPerCell * j
           const iPx = this.pixelsPerCell * i
+
+          // This is essentially the grid
           this.context.strokeRect(
             jPx, iPx, this.pixelsPerCell, this.pixelsPerCell
           )
           if (shouldFillRect) {
-            this.context.fillRect(
-              jPx, iPx, this.pixelsPerCell, this.pixelsPerCell
-            )
+            // This is the actual shape inside of the grid
+            switch (this.shape) {
+              case 'rectangle':
+                this.context.fillRect(
+                  jPx, iPx, this.pixelsPerCell, this.pixelsPerCell
+                )    
+                break;
+              case 'triangle':
+                // Draw a pretty triangle
+                this.context.beginPath();
+                // Start at bottom left
+                this.context.moveTo(jPx, iPx + this.pixelsPerCell)
+                // Move to middle top
+                this.context.lineTo(jPx + (this.pixelsPerCell / 2), iPx)
+                // Now to bottom right
+                this.context.lineTo(
+                  jPx + this.pixelsPerCell, iPx + this.pixelsPerCell
+                )
+                this.context.fill()
+              default:
+            }
           }
         }
       }
