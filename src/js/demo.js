@@ -15,7 +15,7 @@ const defaultOptions = {
   switchEngineSelector: '#ctrl-engine',
   desiredFPS: 30,
   pixelsPerCell: 10,
-  strokeStyle: 'rgba(255,118,5,0.5)',
+  strokeStyle: 'rgba(255,118,5,0.1)',
   fillStyle: 'rgba(222,122,39,0.5)',
   showText: true,
   useWasm: true

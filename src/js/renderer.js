@@ -40,14 +40,14 @@ class Renderer {
     const shouldFillRect = this.pixelsPerCell > 1
     for (let i = 0; i < this.engine.height; i++) {
       for (let j = 0; j < this.engine.width; j++) {
-        if (this.engine.cellSafe(i, j)) {
-          const jPx = this.pixelsPerCell * j
-          const iPx = this.pixelsPerCell * i
+        const jPx = this.pixelsPerCell * j
+        const iPx = this.pixelsPerCell * i
 
-          // This is essentially the grid
-          this.context.strokeRect(
-            jPx, iPx, this.pixelsPerCell, this.pixelsPerCell
-          )
+        // This is essentially the grid
+        this.context.strokeRect(
+          jPx, iPx, this.pixelsPerCell, this.pixelsPerCell
+        )
+        if (this.engine.cellSafe(i, j)) {
           if (shouldFillRect) {
             // This is the actual shape inside of the grid
             switch (this.shape) {
