@@ -12,7 +12,7 @@ class Renderer {
     this.fpsNode = options.fpsNode || false
     this.strokeStyle = options.strokeStyle || 'rgba(255,118,5,0.5)'
     this.fillStyle = options.fillStyle || 'rgba(222,122,39,0.5)'
-    this.shape = 'triangle'
+    this.shape = 'circle'
 
     // renderer variables
     this.play = false
@@ -68,6 +68,18 @@ class Renderer {
                   jPx + this.pixelsPerCell, iPx + this.pixelsPerCell
                 )
                 this.context.fill()
+                break;
+              case 'circle':
+                this.context.beginPath()
+                this.context.arc(
+                  jPx + (this.pixelsPerCell / 2),
+                  iPx + (this.pixelsPerCell / 2),
+                  this.pixelsPerCell / 2,
+                  0,
+                  (Math.PI / 180) * 360,
+                )
+                this.context.fill()
+                break;
               default:
             }
           }
