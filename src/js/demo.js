@@ -59,18 +59,18 @@ const gameOfLife = () => {
     event.target.textContent = event.target.textContent === 'Pause' ? 'Play' : 'Pause'
   }
   const hideContentToggle = event => {
-    var content = document.querySelector('.text-content')
-    content.classList.toggle('hidden')
-    event.target.textContent = event.target.textContent === 'Hide text' ? 'Show text' : 'Hide text'
+    // var content = document.querySelector('.text-content')
+    // content.classList.toggle('hidden')
+    // event.target.textContent = event.target.textContent === 'Hide text' ? 'Show text' : 'Hide text'
   }
   const hideText = () => {
-    var content = document.querySelector('.text-content')
-    content.classList.add('hidden')
-    const hideButton = document.querySelector(options.hideButtonSelector)
-    hideButton.textContent = 'Show text'
+    // var content = document.querySelector('.text-content')
+    // content.classList.add('hidden')
+    // const hideButton = document.querySelector(options.hideButtonSelector)
+    // hideButton.textContent = 'Show text'
   }
   if (options.showText === false) {
-    hideText()
+    // hideText()
   }
   const switchEngine = event => {
     if (engine instanceof WasmEngine) {
