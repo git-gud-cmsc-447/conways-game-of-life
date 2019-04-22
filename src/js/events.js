@@ -1,6 +1,6 @@
 'use strict'
 
-import {erase, cross} from './patterns'
+import {erase, cross, point} from './patterns'
 
 class MouseEventHandler {
   constructor (canvas, engine, renderer) {
@@ -50,7 +50,8 @@ class MouseEventHandler {
       if (event.ctrlKey) {
         erase(this.engine, pos.i, pos.j)
       } else {
-        cross(this.engine, pos.i, pos.j)
+        //cross(this.engine, pos.i, pos.j)
+        point(this.engine, pos.i, pos.j)
       }
     }
   }

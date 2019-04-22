@@ -18,6 +18,10 @@ function cross (engine, i, j) {
   engine.set(i + 1, j)
 }
 
+function point (engine, i, j) {
+  engine.set(i, j)
+}
+
 function erase (engine, i, j) {
   engine.set(i - 1, j - 1, 0)
   engine.set(i - 1, j, 0)
@@ -31,5 +35,5 @@ function erase (engine, i, j) {
 }
 
 export {
-  acorn, cross, erase
+  acorn, cross, erase, point
 }
