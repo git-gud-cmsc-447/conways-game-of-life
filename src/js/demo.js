@@ -13,12 +13,14 @@ const defaultOptions = {
   playButtonSelector: '#ctrl-play-pause',
   hideButtonSelector: '#ctrl-hide-show',
   switchEngineSelector: '#ctrl-engine',
+  switchShapeSelector: '#ctrl-avatar-shape',
   desiredFPS: 30,
   pixelsPerCell: 10,
   strokeStyle: 'rgba(255,118,5,0.1)',
   fillStyle: 'rgba(222,122,39,0.5)',
   showText: true,
-  useWasm: true
+  useWasm: true,
+  shape: 'rectangle'
 }
 const urlOptions = queryString.parse(window.location.search)
 if (urlOptions.desiredFPS || urlOptions.pixelsperCell) {
@@ -80,6 +82,10 @@ const gameOfLife = () => {
     events.engine = engine
     event.target.textContent = event.target.textContent === 'Use js engine' ? 'Use wasm engine' : 'Use js engine'
   }
+  const changeShape = event => {
+    console.log(event)
+    renderer.changeShape(event.target.value)
+  }
   const events = new MouseEventHandler(canvas, engine, renderer)
   events.addEvents([
     {
@@ -96,7 +102,13 @@ const gameOfLife = () => {
       selector: options.switchEngineSelector,
       eventType: 'click',
       callback: switchEngine
+    },
+    {
+      selector: options.switchShapeSelector,
+      eventType: 'change',
+      callback: changeShape
     }
+
   ])
   const checkFlag = () => {
     if (engine.module.calledRun !== true) {

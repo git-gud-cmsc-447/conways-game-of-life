@@ -12,7 +12,7 @@ class Renderer {
     this.fpsNode = options.fpsNode || false
     this.strokeStyle = options.strokeStyle || 'rgba(255,118,5,0.5)'
     this.fillStyle = options.fillStyle || 'rgba(222,122,39,0.5)'
-    this.shape = 'circle'
+    this.shape = options.shape || 'rectangle'
 
     // renderer variables
     this.play = false
@@ -111,6 +111,10 @@ class Renderer {
     this.engine.computeNextState()
     this.play = true
     window.requestAnimationFrame(this.draw.bind(this))
+  }
+
+  changeShape (targetShape) {
+    this.shape = targetShape
   }
 }
 
