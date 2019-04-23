@@ -14,6 +14,9 @@ const defaultOptions = {
   hideButtonSelector: '#ctrl-hide-show',
   switchEngineSelector: '#ctrl-engine',
   switchShapeSelector: '#ctrl-avatar-shape',
+  switchCellColorSelector: '#ctrl-color-cell',
+  switchGridColorSelector: '#ctrl-color-grid',
+  switchDeadColorSelector: '#ctrl-color-dead',
   desiredFPS: 30,
   pixelsPerCell: 10,
   strokeStyle: 'rgba(255,118,5,0.1)',
@@ -86,6 +89,16 @@ const gameOfLife = () => {
     console.log(event)
     renderer.changeShape(event.target.value)
   }
+  const changeCellColor = event => {
+    console.log(event)
+    renderer.changeColor('cell', event.target.value)
+  }
+  const changeGridColor = event => {
+    renderer.changeColor('grid', event.target.value)
+  }
+  const changeDeadColor = event => {
+    renderer.changeColor('dead', event.target.value)
+  }
   const events = new MouseEventHandler(canvas, engine, renderer)
   events.addEvents([
     {
@@ -107,6 +120,21 @@ const gameOfLife = () => {
       selector: options.switchShapeSelector,
       eventType: 'change',
       callback: changeShape
+    },
+    {
+      selector: options.switchCellColorSelector,
+      eventType: 'change',
+      callback: changeCellColor
+    },
+    {
+      selector: options.switchGridColorSelector,
+      eventType: 'change',
+      callback: changeGridColor
+    },
+    {
+      selector: options.switchDeadColorSelector,
+      eventType: 'change',
+      callback: changeDeadColor
     }
 
   ])

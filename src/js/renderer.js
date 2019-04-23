@@ -116,6 +116,23 @@ class Renderer {
   changeShape (targetShape) {
     this.shape = targetShape
   }
+
+  changeColor (target, targetColor) {
+    switch (target) {
+      case 'cell':
+        this.fillStyle = targetColor
+        break;
+      case 'grid':
+        this.strokeStyle = targetColor
+        break;
+      case 'dead':
+        //TODO Implement me
+        break;
+      
+      default:
+        
+    }
+  }
 }
 
 export {Renderer as default}

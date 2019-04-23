@@ -55,5 +55,7 @@
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "spectrum-colorpicker": "^1.8.0"
+  }
 }
