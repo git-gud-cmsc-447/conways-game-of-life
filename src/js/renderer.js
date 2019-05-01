@@ -135,7 +135,7 @@ class Renderer {
         this.strokeStyle = targetColor
         break;
       case 'dead':
-        //TODO Implement me
+        this.deadStyle = targetColor
         break;
       
       default:
