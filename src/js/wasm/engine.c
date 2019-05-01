@@ -8,6 +8,7 @@ int width = 0;
 int height = 0;
 char *current;
 char *next;
+char *path;
 
 EMSCRIPTEN_KEEPALIVE
 char *init(int w, int h) {
@@ -15,6 +16,7 @@ char *init(int w, int h) {
     height = h + 2;
     current = malloc(width * height * sizeof(char));
     next = malloc(width * height * sizeof(char));
+    path = malloc(width * height * sizeof(char));
     return current;
 }
 
@@ -30,6 +32,11 @@ char cell(int i, int j) {
 EMSCRIPTEN_KEEPALIVE
 char cellSafe(int cellIndex) {
   return current[cellIndex];
+}
+
+EMSCRIPTEN_KEEPALIVE
+char cellUsed(int i, int j) {
+  return path[cell_index(i, j)];
 }
 
 EMSCRIPTEN_KEEPALIVE
@@ -78,6 +85,7 @@ void computeNextState () {
       neighbors += current[i_p1 + j_p1];
       if (neighbors == 3) {
         next[i_ + j] = 1;
+        path[i_ + j] = 1;
       } else if (neighbors == 2) {
         next[i_ + j] = current[i_ + j];
       } else {
@@ -91,11 +99,18 @@ void computeNextState () {
 EMSCRIPTEN_KEEPALIVE
 void set (int i, int j, int value) {
   current[cell_index(i, j)] = value;
+  // If we are placing a cell we are going to go ahead and say that we've been here before
+  if (value == 1) {
+    path[cell_index(i, j)] = 1;
+  }
 }
 
 EMSCRIPTEN_KEEPALIVE
 void setNext (int i,int j, int value) {
   next[cell_index(i, j)] = value;
+  if (value == 1) {
+    path[cell_index(i, j)] = 1;
+  }
 }
 
 EMSCRIPTEN_KEEPALIVE

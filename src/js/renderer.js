@@ -12,6 +12,7 @@ class Renderer {
     this.fpsNode = options.fpsNode || false
     this.strokeStyle = options.strokeStyle || 'rgba(255,118,5,0.5)'
     this.fillStyle = options.fillStyle || 'rgba(222,122,39,0.5)'
+    this.deadStyle = options.deadStyle || 'rgba(222,122,39,0.1)'
     this.shape = options.shape || 'rectangle'
 
     // renderer variables
@@ -36,18 +37,26 @@ class Renderer {
     // display engine state on each frame
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.context.strokeStyle = this.strokeStyle
-    this.context.fillStyle = this.fillStyle
     const shouldFillRect = this.pixelsPerCell > 1
     for (let i = 0; i < this.engine.height; i++) {
       for (let j = 0; j < this.engine.width; j++) {
         const jPx = this.pixelsPerCell * j
         const iPx = this.pixelsPerCell * i
+        this.context.fillStyle = this.fillStyle
 
         // This is essentially the grid
         this.context.strokeRect(
           jPx, iPx, this.pixelsPerCell, this.pixelsPerCell
         )
-        if (this.engine.cellSafe(i, j)) {
+        const safe = this.engine.cellSafe(i, j)
+        const used = false
+        if (!safe) { // this is an expensive call, be nice
+          used = this.engine.cellUsed(i, j)
+        }
+        if (safe || used) {
+          if (!safe) {
+            this.context.fillStyle = this.deadStyle
+          }
           if (shouldFillRect) {
             // This is the actual shape inside of the grid
             switch (this.shape) {

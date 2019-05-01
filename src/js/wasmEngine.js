@@ -22,6 +22,11 @@ class WasmEngine {
     // the bounds of the game state array.
     return this.module.HEAP8[this.currentAdress + (i + 1) * (this.width + 2) + j + 1]
     // return this.module.getValue(this.currentAdress + i * this.width + j, 'i8')
+    // return this.module._cell(i + 1, j + 1)
+  }
+
+  cellUsed (i, j) {
+    return this.module._cellUsed(i + 1, j + 1)
   }
 
   computeNextState () {
