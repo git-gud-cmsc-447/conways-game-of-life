@@ -17,6 +17,7 @@ const defaultOptions = {
   switchCellColorSelector: '#ctrl-color-cell',
   switchGridColorSelector: '#ctrl-color-grid',
   switchDeadColorSelector: '#ctrl-color-dead',
+  swtichPatternSelector: '#ctrl-pattern',
   desiredFPS: 30,
   pixelsPerCell: 10,
   strokeStyle: 'rgba(255,118,5,0.1)',
