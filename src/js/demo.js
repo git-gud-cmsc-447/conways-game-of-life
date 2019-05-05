@@ -99,7 +99,7 @@ const gameOfLife = () => {
       case 'acorn':
         acorn(engine, ~~(height / 2), ~~(width / 2))
         break;
-      case 'ggg':
+      case 'gun':
         ggg(engine, ~~(height / 2), ~~(width / 2))
         break;
       default:
