@@ -100,9 +100,7 @@ EMSCRIPTEN_KEEPALIVE
 void set (int i, int j, int value) {
   current[cell_index(i, j)] = value;
   // If we are placing a cell we are going to go ahead and say that we've been here before
-  if (value == 1) {
-    path[cell_index(i, j)] = 1;
-  }
+  path[cell_index(i, j)] = value;
 }
 
 EMSCRIPTEN_KEEPALIVE
