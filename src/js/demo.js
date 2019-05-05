@@ -11,8 +11,6 @@ const defaultOptions = {
   canvasSelector: '#universe',
   fpsNodeSelector: '#fps-info',
   playButtonSelector: '#ctrl-play-pause',
-  hideButtonSelector: '#ctrl-hide-show',
-  switchEngineSelector: '#ctrl-engine',
   switchShapeSelector: '#ctrl-avatar-shape',
   switchCellColorSelector: '#ctrl-color-cell',
   switchGridColorSelector: '#ctrl-color-grid',
@@ -123,7 +121,7 @@ const gameOfLife = () => {
       eventType: 'click',
       callback: playPauseToggle
     },
-    {
+    /*{
       selector: options.hideButtonSelector,
       eventType: 'click',
       callback: hideContentToggle
@@ -132,7 +130,7 @@ const gameOfLife = () => {
       selector: options.switchEngineSelector,
       eventType: 'click',
       callback: switchEngine
-    },
+    },*/
     {
       selector: options.switchShapeSelector,
       eventType: 'change',

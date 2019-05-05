@@ -39,15 +39,29 @@ class Renderer {
     this.context.strokeStyle = this.strokeStyle
     const shouldFillRect = this.pixelsPerCell > 1
     for (let i = 0; i < this.engine.height; i++) {
+      const iPx = this.pixelsPerCell * i
+      // Draw the horizontal grid
+      this.context.beginPath()
+      this.context.moveTo(0, iPx)
+      this.context.lineTo(this.engine.width * this.pixelsPerCell, iPx)
+      this.context.stroke()
       for (let j = 0; j < this.engine.width; j++) {
         const jPx = this.pixelsPerCell * j
-        const iPx = this.pixelsPerCell * i
         this.context.fillStyle = this.fillStyle
 
         // This is essentially the grid
-        this.context.strokeRect(
-          jPx, iPx, this.pixelsPerCell, this.pixelsPerCell
-        )
+        // this.context.strokeRect(
+        //   jPx, iPx, this.pixelsPerCell, this.pixelsPerCell
+        // )
+        //
+
+        // Draw the vertical grid
+        if (i == 0) {
+          this.context.beginPath()
+          this.context.moveTo(jPx, 0)
+          this.context.lineTo(jPx, this.engine.height * this.pixelsPerCell)
+          this.context.stroke()
+        }
         const safe = this.engine.cellSafe(i, j)
         const used = false
         if (!safe) { // this is an expensive call, be nice
