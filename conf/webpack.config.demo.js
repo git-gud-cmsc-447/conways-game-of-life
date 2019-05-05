@@ -79,7 +79,7 @@ module.exports = function (env) {
       }])
     ],
     devServer: {
-      host: '0.0.0.0',
+      host: 'localhost',
       disableHostCheck: true
     },
     devtool: env === 'production' ? 'source-map' : 'source-map',
