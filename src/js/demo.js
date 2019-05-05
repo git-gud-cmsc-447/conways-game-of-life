@@ -2,7 +2,7 @@
 
 import Engine from './engine'
 import WasmEngine from './wasmEngine'
-import {acorn, random, ggg} from './patterns'
+import {acorn, random, ggg, clear} from './patterns'
 import Renderer from './renderer'
 import MouseEventHandler from './events'
 import queryString from 'query-string'
@@ -17,7 +17,7 @@ const defaultOptions = {
   switchCellColorSelector: '#ctrl-color-cell',
   switchGridColorSelector: '#ctrl-color-grid',
   switchDeadColorSelector: '#ctrl-color-dead',
-  swtichPatternSelector: '#ctrl-pattern',
+  switchPatternSelector: '#ctrl-pattern',
   desiredFPS: 30,
   pixelsPerCell: 10,
   strokeStyle: 'rgba(255,118,5,0.1)',
@@ -90,6 +90,22 @@ const gameOfLife = () => {
     console.log(event)
     renderer.changeShape(event.target.value)
   }
+  const changePattern = event => {
+    clear(engine, height, width)
+    switch (event.target.value) {
+      case 'random':
+        random(engine, height, width)
+        break;
+      case 'acorn':
+        acorn(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      case 'ggg':
+        ggg(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      default:
+        
+    }
+  }
   const changeCellColor = event => {
     console.log(event)
     renderer.changeColor('cell', event.target.value)
@@ -131,6 +147,11 @@ const gameOfLife = () => {
       selector: options.switchGridColorSelector,
       eventType: 'change',
       callback: changeGridColor
+    },
+    {
+      selector: options.switchPatternSelector,
+      eventType: 'change',
+      callback: changePattern
     },
     {
       selector: options.switchDeadColorSelector,

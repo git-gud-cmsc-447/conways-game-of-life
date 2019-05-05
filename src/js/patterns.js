@@ -35,13 +35,21 @@ function erase (engine, i, j) {
 }
 
 function random (engine, i, j) {
-  for (var row = 0; row < i; row++) {
-    for(var col = 0; col < j; col++) {
+  for (var row = 0; row <= i; row++) {
+    for(var col = 0; col <= j; col++) {
       if (Math.random() < .01) acorn(engine, row, col)
     }
   }
 }
 
+function clear (engine, i, j) {
+  for (var row = 0; row <= i; row++) {
+    for(var col = 0; col <= j; col++) {
+      engine.set(row, col, 0)
+    }
+  }
+}
+
 export {
-  acorn, cross, erase, point, random
+  acorn, cross, erase, point, random, clear
 }
