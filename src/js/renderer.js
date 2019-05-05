@@ -117,8 +117,8 @@ class Renderer {
   }
 
   start () {
-    this.engine.computeNextState()
-    this.play = true
+    // this.engine.computeNextState()
+    this.play = false
     window.requestAnimationFrame(this.draw.bind(this))
   }
 

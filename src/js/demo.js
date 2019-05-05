@@ -2,7 +2,7 @@
 
 import Engine from './engine'
 import WasmEngine from './wasmEngine'
-import {acorn} from './patterns'
+import {acorn, random, ggg, clear} from './patterns'
 import Renderer from './renderer'
 import MouseEventHandler from './events'
 import queryString from 'query-string'
@@ -17,6 +17,7 @@ const defaultOptions = {
   switchCellColorSelector: '#ctrl-color-cell',
   switchGridColorSelector: '#ctrl-color-grid',
   switchDeadColorSelector: '#ctrl-color-dead',
+  switchPatternSelector: '#ctrl-pattern',
   desiredFPS: 30,
   pixelsPerCell: 10,
   strokeStyle: 'rgba(255,118,5,0.1)',
@@ -89,6 +90,22 @@ const gameOfLife = () => {
     console.log(event)
     renderer.changeShape(event.target.value)
   }
+  const changePattern = event => {
+    clear(engine, height, width)
+    switch (event.target.value) {
+      case 'random':
+        random(engine, height, width)
+        break;
+      case 'acorn':
+        acorn(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      case 'gun':
+        ggg(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      default:
+        
+    }
+  }
   const changeCellColor = event => {
     console.log(event)
     renderer.changeColor('cell', event.target.value)
@@ -132,6 +149,11 @@ const gameOfLife = () => {
       callback: changeGridColor
     },
     {
+      selector: options.switchPatternSelector,
+      eventType: 'change',
+      callback: changePattern
+    },
+    {
       selector: options.switchDeadColorSelector,
       eventType: 'change',
       callback: changeDeadColor
@@ -146,10 +168,11 @@ const gameOfLife = () => {
       wasmEngine.init()
       jsEngine.init()
         // initialize some cells at the center
-      acorn(wasmEngine, ~~(height / 2), ~~(width / 2))
-      acorn(wasmEngine, 0, 0)
-      acorn(jsEngine, ~~(height / 2), ~~(width / 2))
-      acorn(jsEngine, 0, 0)
+      // acorn(wasmEngine, ~~(height / 2), ~~(width / 2))
+      // acorn(wasmEngine, 0, 0)
+      // acorn(jsEngine, ~~(height / 2), ~~(width / 2))
+      // acorn(jsEngine, 0, 0)
+      random(wasmEngine, height, width)
         // start
       renderer.start()
     }
