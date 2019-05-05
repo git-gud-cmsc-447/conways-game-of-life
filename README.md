@@ -2,33 +2,12 @@
 
 Conway's game of life implemented both in JavaScript and in WebAssembly using a canvas element for rendering.
 
-* [Demo](https://blaze33.github.io/way-of-life/)
-* [Demo up to 60FPS, 1 pixel per cell](https://blaze33.github.io/way-of-life/?desiredFPS=60&pixelsPerCell=1)
+## How to set up Development Environment
+1. Install [NodeJS](https://nodejs.org/en/)
+1. Install [Yarn](https://yarnpkg.com/en/docs/install)
+1. Clone this repo
+1. Run `yarn`
+1. Run `yarn serve` to start serving the page
+1. Go to `http://0.0.0.0:8080/` in your browser if it does not open automatically
+1. The page will automatically reload upon changes to the code
 
-[![npm](https://img.shields.io/npm/v/way-of-life.svg)](https://www.npmjs.com/package/way-of-life)
-[![Build Status](https://travis-ci.org/blaze33/way-of-life.svg?branch=master)](https://travis-ci.org/blaze33/way-of-life)
-
-## Installation
-
-The npm package only links to the ES6 code so it's only usable as a dependency for now.
-```bash
-npm install --save-dev way-of-life
-```
-
-## Usage
-
-```javascript
-import {Engine, acorn} from 'way-of-life'
-
-// initialize the game with an empty 40x40 matrix
-const engine = new Engine(40, 40)
-engine.init()
-
-// initialize some living cells around the center of the matrix
-acorn(engine, 20, 20)
-
-// compute the next state of game
-engine.computeNextState()
-```
-
-See the [demo code](https://github.com/blaze33/way-of-life/blob/master/src/js/demo.js) for a more advanced usage.
