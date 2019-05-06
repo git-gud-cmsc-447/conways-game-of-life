@@ -27,19 +27,19 @@ $accent: #ff5722;
 
 #universe {
     border: 0;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 90%;
     height: 90%;
-    z-index: -1;
+    z-index: 1;
     cursor: crosshair;
 }
 
 #sidebar {
     border: 0;
     position: fixed;
-    top: 0;
+    top: 50px;
     right: 0;
     width: 10%;
     height: 90%;
@@ -59,7 +59,7 @@ $accent: #ff5722;
 
 .controls {
     text-align: center;
-    position: fixed;
+    position: relative;
     bottom: 0;
     margin-left: auto;
     margin-right: auto;
@@ -89,12 +89,24 @@ $accent: #ff5722;
     }
 }
 
+#size-container {
+    input {
+        width: 30%;
+    }
+}
+
 #fps-info {
     min-width: 10rem;
     position: fixed;
     top: 26px;
     left: 0;
     right: 80px;
+    text-align: right;
+}
+#gen-info {
+    position: fixed;
+    top: 40px;
+    right: 50px;
     text-align: right;
 }
 
