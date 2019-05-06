@@ -10,6 +10,8 @@ import queryString from 'query-string'
 const defaultOptions = {
   canvasSelector: '#universe',
   fpsNodeSelector: '#fps-info',
+  infoNodeSelector: '#cell-info',
+  genNodeSelector: '#gen-info',
   playButtonSelector: '#ctrl-play-pause',
   switchShapeSelector: '#ctrl-avatar-shape',
   switchCellColorSelector: '#ctrl-color-cell',
@@ -51,6 +53,8 @@ const gameOfLife = () => {
     desiredFPS: options.desiredFPS,
     pixelsPerCell: options.pixelsPerCell,
     fpsNode: document.querySelector(options.fpsNodeSelector),
+    genNode: document.querySelector(options.genNodeSelector),
+    cellNode: document.querySelector(options.infoNodeSelector),
     strokeStyle: options.strokeStyle,
     fillStyle: options.fillStyle
   })

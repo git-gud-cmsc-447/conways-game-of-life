@@ -6,9 +6,16 @@
 </head>
 <body>
   <div class="article">
+    <div id="cell-info">X/Y Alive</div>
+    <div id="gen-info">Generation: X</div>
     <canvas id="universe"></canvas>
     <div id="fps-info"></div>
     <div id="sidebar">
+        <div class="container" id="size-container">
+            <p>Grid Size</p>
+            X: <input type='number' id='ctl-grid-x' value=50 /> 
+            Y: <input type='number' id='ctl-grid-y' value=50 />
+        </div>
         <div class="container">
             <p>Avatar Selection</p>
             <select id="ctrl-avatar-shape">
@@ -33,6 +40,9 @@
                 <option value="gun">Gosper Glider Gun</option>
             </select>
         </div>
+        <div class="container">
+            <input type="checkbox" name="wrap" id="wrap" checked> Grid Wrapping <br/>
+        </div>
     </div>
     <!-- <section class="content text&#45;content"> -->
     <!--   <!&#45;&#45; <h1>The Way of Life</h1> &#45;&#45;> -->
@@ -55,8 +65,6 @@
     <!-- </section> -->
     <section class="content controls">
       <button class="btn--raised btn--primary" id="ctrl-play-pause">Play</button>
-      <button class="btn--raised btn--secondary" id="ctrl-hide-show">Hide text</button>
-      <button class="btn--raised btn--secondary" id="ctrl-engine">Use js engine</button>
       <br>
     </section>
   </div>

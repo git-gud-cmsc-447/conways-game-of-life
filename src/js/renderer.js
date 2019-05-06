@@ -10,6 +10,8 @@ class Renderer {
     this.pixelsPerCell = options.pixelsPerCell || 5
     this.desiredFPS = options.desiredFPS || 30
     this.fpsNode = options.fpsNode || false
+    this.cellNode = options.cellNode || false
+    this.genNode = options.genNode || false
     this.strokeStyle = options.strokeStyle || 'rgba(255,118,5,0.5)'
     this.fillStyle = options.fillStyle || 'rgba(222,122,39,0.5)'
     this.deadStyle = options.deadStyle || 'rgba(222,122,39,0.1)'
@@ -21,6 +23,8 @@ class Renderer {
     this.engineTime = 0
     this.fps = 0
     this.frameNumber = 0
+
+    this.genNumber = 0
 
     // setup canvas with correct size
     this.canvas.width = this.engine.width * this.pixelsPerCell
@@ -38,6 +42,8 @@ class Renderer {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.context.strokeStyle = this.strokeStyle
     const shouldFillRect = this.pixelsPerCell > 1
+    var alive = 0
+    const total = this.engine.width * this.engine.height
     for (let i = 0; i < this.engine.height; i++) {
       const iPx = this.pixelsPerCell * i
       // Draw the horizontal grid
@@ -70,6 +76,8 @@ class Renderer {
         if (safe || used) {
           if (!safe) {
             this.context.fillStyle = this.deadStyle
+          } else {
+            alive++;
           }
           if (shouldFillRect) {
             // This is the actual shape inside of the grid
@@ -109,12 +117,14 @@ class Renderer {
         }
       }
     }
-
+    this.cellNode.textContent = `${alive}/${total} Alive`
+    this.genNode.textContent = `Generation: ${this.genNumber}`
     // compute engine next step with appropriate frequency
     const engineElapsed = timeStamp - this.engineTime
     if (engineElapsed > 1000 / this.desiredFPS && this.play) {
       this.engine.computeNextState()
       this.frameNumber += 1
+      this.genNumber += 1
       this.engineTime = timeStamp - (engineElapsed % (1000 / this.desiredFPS))
     }
 
