@@ -35,7 +35,10 @@ class Renderer {
     window.requestAnimationFrame(this.draw.bind(this))
 
     // display engine state on each frame
+    // We will clear to the dead color - fps will improve as game goes on
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    this.context.fillStyle = this.deadStyle
+    this.context.fillRect(0, 0, this.canvas.width, this.canvas.height)
     this.context.strokeStyle = this.strokeStyle
     const shouldFillRect = this.pixelsPerCell > 1
     for (let i = 0; i < this.engine.height; i++) {
@@ -67,9 +70,9 @@ class Renderer {
         if (!safe) { // this is an expensive call, be nice
           used = this.engine.cellUsed(i, j)
         }
-        if (safe || used) {
+        if (safe || !used) {
           if (!safe) {
-            this.context.fillStyle = this.deadStyle
+            this.context.fillStyle = 'rgba(255, 255, 255, 1)'
           }
           if (shouldFillRect) {
             // This is the actual shape inside of the grid
