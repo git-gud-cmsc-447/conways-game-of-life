@@ -20,6 +20,8 @@ const defaultOptions = {
   switchPatternSelector: '#ctrl-pattern',
   switchWrapSelector: '#wrap',
   desiredFPS: 30,
+  width: 50,
+  height: 20,
   pixelsPerCell: 10,
   strokeStyle: 'rgba(255,118,5,0.1)',
   fillStyle: 'rgba(222,122,39,0.5)',
@@ -40,8 +42,8 @@ const gameOfLife = () => {
 
   //const width = ~~(canvas.clientWidth / options.pixelsPerCell)
   //const height = ~~(canvas.clientHeight / options.pixelsPerCell)
-  const width = 500
-  const height = 200
+  const width = options.width
+  const height = options.height
   options.pixelsPerCell = ~~(canvas.clientWidth / width)
   const wasmEngine = new WasmEngine(width, height)
   const jsEngine = new Engine(width, height)
