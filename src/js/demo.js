@@ -18,6 +18,7 @@ const defaultOptions = {
   switchGridColorSelector: '#ctrl-color-grid',
   switchDeadColorSelector: '#ctrl-color-dead',
   switchPatternSelector: '#ctrl-pattern',
+  switchWrapSelector: '#wrap',
   desiredFPS: 30,
   pixelsPerCell: 10,
   strokeStyle: 'rgba(255,118,5,0.1)',
@@ -118,6 +119,10 @@ const gameOfLife = () => {
   const changeDeadColor = event => {
     renderer.changeColor('dead', event.target.value)
   }
+  const setWrap = event => {
+    console.log(event)
+    engine.setWrap(event.target.checked)
+  }
   const events = new MouseEventHandler(canvas, engine, renderer)
   events.addEvents([
     {
@@ -149,6 +154,11 @@ const gameOfLife = () => {
       selector: options.switchGridColorSelector,
       eventType: 'change',
       callback: changeGridColor
+    },
+    {
+      selector: options.switchWrapSelector,
+      eventType: 'change',
+      callback: setWrap
     },
     {
       selector: options.switchPatternSelector,

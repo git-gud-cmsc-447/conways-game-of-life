@@ -36,6 +36,10 @@ class WasmEngine {
   set (i, j, value = 1) {
     this.module._set(i, j, value)
   }
+
+  setWrap (value) {
+    this.module._setWrap(value)
+  }
 }
 
 export {WasmEngine as default}

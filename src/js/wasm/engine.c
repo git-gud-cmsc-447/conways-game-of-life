@@ -6,6 +6,7 @@
 
 int width = 0;
 int height = 0;
+int doWrap = 1;
 char *current;
 char *next;
 char *path;
@@ -61,7 +62,7 @@ void loopCurrentState() {
 
 EMSCRIPTEN_KEEPALIVE
 void computeNextState () {
-  loopCurrentState();
+  if (doWrap) loopCurrentState();
 
   int neighbors = 0;
   int i_m1, i_p1, i_;
@@ -101,6 +102,11 @@ void set (int i, int j, int value) {
   current[cell_index(i, j)] = value;
   // If we are placing a cell we are going to go ahead and say that we've been here before
   path[cell_index(i, j)] = value;
+}
+
+EMSCRIPTEN_KEEPALIVE
+void setWrap (int value) {
+    doWrap = value;
 }
 
 EMSCRIPTEN_KEEPALIVE
