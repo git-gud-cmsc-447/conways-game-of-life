@@ -19,7 +19,12 @@ const defaultOptions = {
   switchDeadColorSelector: '#ctrl-color-dead',
   switchPatternSelector: '#ctrl-pattern',
   switchWrapSelector: '#wrap',
+  xSizeSelector: '#ctl-grid-x',
+  ySizeSelector: '#ctl-grid-y',
+  applySizeSelector: '#apply',
   desiredFPS: 30,
+  width: 50,
+  height: 20,
   pixelsPerCell: 10,
   strokeStyle: 'rgba(255,118,5,0.1)',
   fillStyle: 'rgba(222,122,39,0.5)',
@@ -34,12 +39,19 @@ if (urlOptions.desiredFPS || urlOptions.pixelsperCell) {
 const options = Object.assign(defaultOptions, urlOptions)
 options.desiredFPS = parseInt(options.desiredFPS, 10)
 options.pixelsperCell = parseInt(options.pixelsperCell, 10)
+options.width = parseInt(options.width, 10)
+options.height = parseInt(options.height, 10)
 
 const gameOfLife = () => {
   const canvas = document.querySelector(options.canvasSelector)
 
-  const width = ~~(canvas.clientWidth / options.pixelsPerCell)
-  const height = ~~(canvas.clientHeight / options.pixelsPerCell)
+  //const width = ~~(canvas.clientWidth / options.pixelsPerCell)
+  //const height = ~~(canvas.clientHeight / options.pixelsPerCell)
+  const width = options.width
+  const height = options.height
+  document.querySelector(options.xSizeSelector).value = width
+  document.querySelector(options.ySizeSelector).value = height
+  options.pixelsPerCell = ~~(canvas.clientWidth / width)
   const wasmEngine = new WasmEngine(width, height)
   const jsEngine = new Engine(width, height)
   var engine
@@ -123,6 +135,11 @@ const gameOfLife = () => {
     console.log(event)
     engine.setWrap(event.target.checked)
   }
+  const setSize = event => {
+    var newWidth = document.querySelector(options.xSizeSelector).value
+    var newHeight = document.querySelector(options.ySizeSelector).value
+    window.location.search = `width=${newWidth}&height=${newHeight}`
+  }
   const events = new MouseEventHandler(canvas, engine, renderer)
   events.addEvents([
     {
@@ -159,6 +176,11 @@ const gameOfLife = () => {
       selector: options.switchWrapSelector,
       eventType: 'change',
       callback: setWrap
+    },
+    {
+      selector: options.applySizeSelector,
+      eventType: 'click',
+      callback: setSize
     },
     {
       selector: options.switchPatternSelector,
