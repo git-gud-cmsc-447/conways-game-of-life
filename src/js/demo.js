@@ -38,8 +38,11 @@ options.pixelsperCell = parseInt(options.pixelsperCell, 10)
 const gameOfLife = () => {
   const canvas = document.querySelector(options.canvasSelector)
 
-  const width = ~~(canvas.clientWidth / options.pixelsPerCell)
-  const height = ~~(canvas.clientHeight / options.pixelsPerCell)
+  //const width = ~~(canvas.clientWidth / options.pixelsPerCell)
+  //const height = ~~(canvas.clientHeight / options.pixelsPerCell)
+  const width = 500
+  const height = 200
+  options.pixelsPerCell = ~~(canvas.clientWidth / width)
   const wasmEngine = new WasmEngine(width, height)
   const jsEngine = new Engine(width, height)
   var engine
