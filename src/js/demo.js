@@ -19,6 +19,9 @@ const defaultOptions = {
   switchDeadColorSelector: '#ctrl-color-dead',
   switchPatternSelector: '#ctrl-pattern',
   switchWrapSelector: '#wrap',
+  xSizeSelector: '#x-size',
+  ySizeSelector: '#y-size',
+  applySizeSelector: '#apply-size',
   desiredFPS: 30,
   width: 50,
   height: 20,
@@ -36,6 +39,8 @@ if (urlOptions.desiredFPS || urlOptions.pixelsperCell) {
 const options = Object.assign(defaultOptions, urlOptions)
 options.desiredFPS = parseInt(options.desiredFPS, 10)
 options.pixelsperCell = parseInt(options.pixelsperCell, 10)
+options.width = parseInt(options.width, 10)
+options.height = parseInt(options.height, 10)
 
 const gameOfLife = () => {
   const canvas = document.querySelector(options.canvasSelector)
