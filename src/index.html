@@ -13,9 +13,10 @@
     <div id="sidebar">
         <div class="container" id="size-container">
             <p>Grid Size</p>
-            X: <input type='number' id='ctl-grid-x' value=50 /> 
-            Y: <input type='number' id='ctl-grid-y' value=50 />
+            X: <input type='number' id='ctl-grid-x' value=50 min=0/> 
+            Y: <input type='number' id='ctl-grid-y' value=50 min=0/><br />
         </div>
+        <input type='submit' id='apply' class='btn--raised btn--secondary controls'>
         <div class="container">
             <p>Avatar Selection</p>
             <select id="ctrl-avatar-shape">

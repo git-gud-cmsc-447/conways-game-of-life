@@ -19,9 +19,9 @@ const defaultOptions = {
   switchDeadColorSelector: '#ctrl-color-dead',
   switchPatternSelector: '#ctrl-pattern',
   switchWrapSelector: '#wrap',
-  xSizeSelector: '#x-size',
-  ySizeSelector: '#y-size',
-  applySizeSelector: '#apply-size',
+  xSizeSelector: '#ctl-grid-x',
+  ySizeSelector: '#ctl-grid-y',
+  applySizeSelector: '#apply',
   desiredFPS: 30,
   width: 50,
   height: 20,
@@ -49,6 +49,8 @@ const gameOfLife = () => {
   //const height = ~~(canvas.clientHeight / options.pixelsPerCell)
   const width = options.width
   const height = options.height
+  document.querySelector(options.xSizeSelector).value = width
+  document.querySelector(options.ySizeSelector).value = height
   options.pixelsPerCell = ~~(canvas.clientWidth / width)
   const wasmEngine = new WasmEngine(width, height)
   const jsEngine = new Engine(width, height)
@@ -133,6 +135,11 @@ const gameOfLife = () => {
     console.log(event)
     engine.setWrap(event.target.checked)
   }
+  const setSize = event => {
+    var newWidth = document.querySelector(options.xSizeSelector).value
+    var newHeight = document.querySelector(options.ySizeSelector).value
+    window.location.search = `width=${newWidth}&height=${newHeight}`
+  }
   const events = new MouseEventHandler(canvas, engine, renderer)
   events.addEvents([
     {
@@ -169,6 +176,11 @@ const gameOfLife = () => {
       selector: options.switchWrapSelector,
       eventType: 'change',
       callback: setWrap
+    },
+    {
+      selector: options.applySizeSelector,
+      eventType: 'click',
+      callback: setSize
     },
     {
       selector: options.switchPatternSelector,
