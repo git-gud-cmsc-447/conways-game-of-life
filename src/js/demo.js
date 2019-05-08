@@ -19,6 +19,7 @@ const defaultOptions = {
   switchDeadColorSelector: '#ctrl-color-dead',
   switchPatternSelector: '#ctrl-pattern',
   switchWrapSelector: '#wrap',
+  changeSpeedSelector: '#speed-slider',
   xSizeSelector: '#ctl-grid-x',
   ySizeSelector: '#ctl-grid-y',
   applySizeSelector: '#apply',
@@ -140,6 +141,11 @@ const gameOfLife = () => {
     var newHeight = document.querySelector(options.ySizeSelector).value
     window.location.search = `width=${newWidth}&height=${newHeight}`
   }
+  const changeSpeed = event => {
+    console.log(event)
+    options.desiredFPS = event.target.value
+    renderer.changeSpeed(options.desiredFPS)
+  }
   const events = new MouseEventHandler(canvas, engine, renderer)
   events.addEvents([
     {
@@ -157,6 +163,11 @@ const gameOfLife = () => {
       eventType: 'click',
       callback: switchEngine
     },*/
+    {
+      selector: options.changeSpeedSelector,
+      eventType: 'change',
+      callback: changeSpeed
+    },
     {
       selector: options.switchShapeSelector,
       eventType: 'change',

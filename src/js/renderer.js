@@ -23,6 +23,7 @@ class Renderer {
     this.engineTime = 0
     this.fps = 0
     this.frameNumber = 0
+    this.skips = 0
 
     this.genNumber = 0
 
@@ -148,6 +149,14 @@ class Renderer {
 
   changeShape (targetShape) {
     this.shape = targetShape
+  }
+
+  changeSpeed (targetSpeed) {
+    this.desiredFPS = targetSpeed
+  }
+
+  changeSkips (targetSkips) {
+    this.skips = 0
   }
 
   changeColor (target, targetColor) {
