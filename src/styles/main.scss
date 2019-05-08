@@ -69,6 +69,9 @@ $accent: #ff5722;
     button {
         margin: 0.5rem 1rem;
     }
+    input[type="number"] {
+        width: 7%;
+    }
 }
 
 .hidden {
