@@ -20,6 +20,7 @@ const defaultOptions = {
   switchPatternSelector: '#ctrl-pattern',
   switchWrapSelector: '#wrap',
   changeSpeedSelector: '#speed-slider',
+  changeSkipsSelector: '#ctrl-skips',
   xSizeSelector: '#ctl-grid-x',
   ySizeSelector: '#ctl-grid-y',
   applySizeSelector: '#apply',
@@ -146,6 +147,9 @@ const gameOfLife = () => {
     options.desiredFPS = event.target.value
     renderer.changeSpeed(options.desiredFPS)
   }
+  const changeSkips = event => {
+    renderer.changeSkips(event.target.value)
+  }
   const events = new MouseEventHandler(canvas, engine, renderer)
   events.addEvents([
     {
@@ -163,6 +167,11 @@ const gameOfLife = () => {
       eventType: 'click',
       callback: switchEngine
     },*/
+    {
+      selector: options.changeSkipsSelector,
+      eventType: 'change',
+      callback: changeSkips
+    },
     {
       selector: options.changeSpeedSelector,
       eventType: 'change',

@@ -124,6 +124,9 @@ class Renderer {
     const engineElapsed = timeStamp - this.engineTime
     if (engineElapsed > 1000 / this.desiredFPS && this.play) {
       this.engine.computeNextState()
+      for (var i = 0; i < this.skips; i++) {
+        this.engine.computeNextState()
+      }
       this.frameNumber += 1
       this.genNumber += 1
       this.engineTime = timeStamp - (engineElapsed % (1000 / this.desiredFPS))
@@ -156,7 +159,7 @@ class Renderer {
   }
 
   changeSkips (targetSkips) {
-    this.skips = 0
+    this.skips = targetSkips
   }
 
   changeColor (target, targetColor) {
