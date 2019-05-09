@@ -5,7 +5,7 @@ const PurifyCSSPlugin = require('purifycss-webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = function (env) {
-  const outputPath = '../docs'
+  const outputPath = '../build'
   const publicPath = ''
 
   return {
