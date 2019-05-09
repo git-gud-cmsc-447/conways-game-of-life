@@ -32,6 +32,11 @@ char cell(int i, int j) {
 }
 
 EMSCRIPTEN_KEEPALIVE
+void setRule(int index, int value) {
+  live[index] = value;
+}
+
+EMSCRIPTEN_KEEPALIVE
 char cellSafe(int cellIndex) {
   return current[cellIndex];
 }

@@ -150,6 +150,23 @@ const gameOfLife = () => {
   const changeSkips = event => {
     renderer.changeSkips(event.target.value)
   }
+  const changeRuleSet = event => {
+    var id = parseInt(event.target.id.substr(-1))
+    var value
+    switch (event.target.value) {
+      case 'K':
+        value = 0
+        break;
+      case 'G':
+        value = 1
+        break;
+      case 'N':
+        value = 2
+        break;
+    }
+    console.log(`Setting ${id} to ${value}`)
+    engine.setRule(id, value)
+  }
   const events = new MouseEventHandler(canvas, engine, renderer)
   events.addEvents([
     {
@@ -214,6 +231,15 @@ const gameOfLife = () => {
     }
 
   ])
+  var newEvents = []
+  for (var i = 0, len = 9; i < len; i++) {
+    newEvents.push({
+      selector: `#Rule${i}`,
+      eventType: 'change',
+      callback: changeRuleSet
+    })
+  }
+  events.addEvents(newEvents)
   const checkFlag = () => {
     if (engine.module.calledRun !== true) {
       window.setTimeout(checkFlag.bind(this), 100)
