@@ -40,6 +40,10 @@ class WasmEngine {
   setWrap (value) {
     this.module._setWrap(value)
   }
+
+  setRule (index, value) {
+    this.module._setRule(index, value)
+  }
 }
 
 export {WasmEngine as default}

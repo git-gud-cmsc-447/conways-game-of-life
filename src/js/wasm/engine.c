@@ -7,6 +7,7 @@
 int width = 0;
 int height = 0;
 int doWrap = 1;
+int live[] = {0,0,2,1,0,0,0,0,0};
 char *current;
 char *next;
 char *path;
@@ -28,6 +29,11 @@ int cell_index(int i, int j) {
 EMSCRIPTEN_KEEPALIVE
 char cell(int i, int j) {
   return current[cell_index(i, j)];
+}
+
+EMSCRIPTEN_KEEPALIVE
+void setRule(int index, int value) {
+  live[index] = value;
 }
 
 EMSCRIPTEN_KEEPALIVE
@@ -84,14 +90,26 @@ void computeNextState () {
       neighbors += current[i_p1 + j_m1];
       neighbors += current[i_p1 + j];
       neighbors += current[i_p1 + j_p1];
-      if (neighbors == 3) {
-        next[i_ + j] = 1;
-        path[i_ + j] = 1;
-      } else if (neighbors == 2) {
-        next[i_ + j] = current[i_ + j];
-      } else {
-        next[i_ + j] = 0;
+      switch (live[neighbors]) {
+          case 1:
+              // If we live or become alive we add ourselves to the trail
+              path[i_ + j] = 1;
+          case 0:
+              // If 0 you die, 1 you live (or become alive)
+              next[i_ + j] = live[neighbors];
+              break;
+          case 2:
+              // If 2 you do nothing
+              next[i_ + j] = current[i_ + j];
       }
+      /* if (neighbors == 3) { */
+      /*   next[i_ + j] = 1; */
+      /*   path[i_ + j] = 1; */
+      /* } else if (neighbors == 2) { */
+      /*   next[i_ + j] = current[i_ + j]; */
+      /* } else { */
+      /*   next[i_ + j] = 0; */
+      /* } */
     }
   }
   memcpy(current, next, width * height);
