@@ -2,7 +2,7 @@
 
 import Engine from './engine'
 import WasmEngine from './wasmEngine'
-import {acorn, random, ggg, clear, custom} from './patterns'
+import {acorn, random, ggg, clear, custom, glider, lwss, eden, cord, homer, cow, puffer} from './patterns'
 import Renderer from './renderer'
 import MouseEventHandler from './events'
 import queryString from 'query-string'
@@ -123,8 +123,28 @@ const gameOfLife = () => {
       case 'custom':
         custom(engine, ~~(height / 2), ~~(width / 2), options.customString)
         break;
+      case 'glider':
+        glider(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      case 'lwss':
+        lwss(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      case 'eden':
+        eden(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      case 'cord':
+        cord(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      case 'homer':
+        homer(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      case 'cow':
+        cow(engine, ~~(height / 2), ~~(width / 2))
+        break;
+      case 'puffer':
+        puffer(engine, ~~(height / 2), ~~(width / 2))
+        break;
       default:
-        
     }
   }
   const changeCellColor = event => {
@@ -172,10 +192,16 @@ const gameOfLife = () => {
   }
   const changeSkips = event => {
      if(event.target.value < 0) {
-      alert("test")
+       event.target.value = 0
+      alert("Error: value is too large (min size = 0)")
     }
+    else if (event.target.value > 100) {
+      event.target.value = 0 
+      alert("Error: value is too large (max size = 100)")
+    }
+    else {
     renderer.changeSkips(event.target.value)
-   
+    }
       
   }
   const changeRuleSet = event => {
