@@ -28,6 +28,7 @@ class MouseEventHandler {
       this.listeners.push(event)
       let target = document
       if (event.selector) {
+        alert("test")
         target = document.querySelector(event.selector)
       }
       if (target) {
