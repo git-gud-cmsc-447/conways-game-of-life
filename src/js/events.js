@@ -39,8 +39,8 @@ class MouseEventHandler {
   addCells (event, touch = false) {
     const rect = this.canvas.getBoundingClientRect()
     const mousePos = {
-      x: (event.clientX - rect.left) / (rect.right - rect.left) * this.canvas.width,
-      y: (event.clientY - rect.top) / (rect.bottom - rect.top) * this.canvas.height
+      x: ((event.clientX - rect.left) / (rect.right - rect.left) * this.canvas.width) + 10,
+      y: ((event.clientY - rect.top) / (rect.bottom - rect.top) * this.canvas.height) + 10
     }
     const pos = {
       i: ~~(mousePos.y / this.renderer.pixelsPerCell),
