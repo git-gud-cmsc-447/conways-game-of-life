@@ -49,7 +49,16 @@ class MouseEventHandler {
     if (this.mouseDown || touch) {
       if (event.ctrlKey) {
         erase(this.engine, pos.i, pos.j)
-      } else {
+      }
+      else if (event.shiftKey) {
+        //Place an always alive cell
+        point(this.engine, pos.i, pos.j, 2)
+      }
+      else if (event.altKey) {
+        //Place an always dead cell
+        point(this.engine, pos.i, pos.j, 3)
+      }
+      else {
         //cross(this.engine, pos.i, pos.j)
         point(this.engine, pos.i, pos.j)
       }

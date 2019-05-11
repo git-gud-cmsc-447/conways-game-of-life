@@ -44,8 +44,8 @@ function cross (engine, i, j) {
   engine.set(i + 1, j)
 }
 
-function point (engine, i, j) {
-  engine.set(i, j)
+function point (engine, i, j, value = 1) {
+  engine.set(i, j, value)
 }
 
 function erase (engine, i, j) {

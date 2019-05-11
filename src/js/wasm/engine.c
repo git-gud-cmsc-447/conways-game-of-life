@@ -80,6 +80,10 @@ void computeNextState () {
     i_p1 = (i + 1) * width;
     i_ = i * width;
     for (int j = 1; j < width_limit; j++) {
+      if (current[i_ + j] > 1) {
+        next[i_ + j] = current[i_ + j];
+        continue;
+      }
       j_m1 = j - 1;
       j_p1 = j + 1;
       neighbors = current[i_m1 + j_m1];
@@ -119,6 +123,7 @@ EMSCRIPTEN_KEEPALIVE
 void set (int i, int j, int value) {
   current[cell_index(i, j)] = value;
   // If we are placing a cell we are going to go ahead and say that we've been here before
+  if (value == 3) value = 0;
   path[cell_index(i, j)] = value;
 }
 
