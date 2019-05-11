@@ -157,10 +157,11 @@ const gameOfLife = () => {
     renderer.changeSpeed(options.desiredFPS)
   }
   const changeSkips = event => {
-    renderer.changeSkips(event.target.value)
-    if(event.target.value < 0) {
+     if(event.target.value < 0) {
       alert("test")
     }
+    renderer.changeSkips(event.target.value)
+   
       
   }
   const changeRuleSet = event => {
