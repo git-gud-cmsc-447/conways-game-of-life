@@ -158,6 +158,10 @@ const gameOfLife = () => {
   }
   const changeSkips = event => {
     renderer.changeSkips(event.target.value)
+    if(event.target.value < 0) {
+      alert("test")
+    }
+      
   }
   const changeRuleSet = event => {
     var id = parseInt(event.target.id.substr(-1))
