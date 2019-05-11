@@ -120,6 +120,10 @@ class Renderer {
     }
     this.cellNode.textContent = `${alive}/${total} Alive`
     this.genNode.textContent = `Generation: ${this.genNumber}`
+    if (alive == 0) {
+      alert("Game over: No cells are left alive")
+      location.reload()
+    }
     // compute engine next step with appropriate frequency
     const engineElapsed = timeStamp - this.engineTime
     if (engineElapsed > 1000 / this.desiredFPS && this.play) {
