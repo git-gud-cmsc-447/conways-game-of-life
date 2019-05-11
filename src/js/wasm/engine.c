@@ -10,6 +10,7 @@ int doWrap = 1;
 int live[] = {0,0,2,1,0,0,0,0,0};
 char *current;
 char *next;
+char *prev;
 char *path;
 
 EMSCRIPTEN_KEEPALIVE
@@ -19,6 +20,7 @@ char *init(int w, int h) {
     current = malloc(width * height * sizeof(char));
     next = malloc(width * height * sizeof(char));
     path = malloc(width * height * sizeof(char));
+    prev = malloc(width * height * sizeof(char));
     return current;
 }
 
@@ -124,6 +126,7 @@ void computeNextState () {
       /* } */
     }
   }
+  memcpy(prev, current, width * height);
   memcpy(current, next, width * height);
 }
 
