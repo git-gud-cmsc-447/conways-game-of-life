@@ -156,6 +156,10 @@ const gameOfLife = () => {
   }
   const changeFile = event => {
     var file = event.target.files[0]
+    if (file.size > 1000000 ) {
+      alert('Invalid File!')
+      return
+    }
     const reader = new FileReader()
     reader.onload = function (target) {
       options.customString = target.target.result
