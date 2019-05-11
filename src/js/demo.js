@@ -2,7 +2,7 @@
 
 import Engine from './engine'
 import WasmEngine from './wasmEngine'
-import {acorn, random, ggg, clear} from './patterns'
+import {acorn, random, ggg, clear, glider, lwss, eden, cord, homer, cow, puffer} from './patterns'
 import Renderer from './renderer'
 import MouseEventHandler from './events'
 import queryString from 'query-string'
@@ -119,7 +119,28 @@ const gameOfLife = () => {
       case 'gun':
         ggg(engine, ~~(height / 2), ~~(width / 2))
         break;
-      default:
+	  case 'glider':
+		glider(engine, ~~(height / 2), ~~(width / 2))
+		break;
+	  case 'lwss':
+		lwss(engine, ~~(height / 2), ~~(width / 2))
+		break;
+	  case 'eden':
+		eden(engine, ~~(height / 2), ~~(width / 2))
+		break;
+	  case 'cord':
+		cord(engine, ~~(height / 2), ~~(width / 2))
+		break;
+	  case 'homer':
+		homer(engine, ~~(height / 2), ~~(width / 2))
+		break;
+	  case 'cow':
+		cow(engine, ~~(height / 2), ~~(width / 2))
+		break;
+	  case 'puffer':
+		puffer(engine, ~~(height / 2), ~~(width / 2))
+		break;
+	  default:
         
     }
   }
