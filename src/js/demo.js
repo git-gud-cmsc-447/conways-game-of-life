@@ -2,7 +2,7 @@
 
 import Engine from './engine'
 import WasmEngine from './wasmEngine'
-import {acorn, random, ggg, clear} from './patterns'
+import {acorn, random, ggg, clear, custom} from './patterns'
 import Renderer from './renderer'
 import MouseEventHandler from './events'
 import queryString from 'query-string'
@@ -28,6 +28,7 @@ const defaultOptions = {
   width: 50,
   height: 20,
   pixelsPerCell: 10,
+  customString: "",
   strokeStyle: 'rgba(255,118,5,0.1)',
   fillStyle: 'rgba(222,122,39,0.5)',
   showText: true,
@@ -119,6 +120,9 @@ const gameOfLife = () => {
       case 'gun':
         ggg(engine, ~~(height / 2), ~~(width / 2))
         break;
+      case 'custom':
+        custom(engine, ~~(height / 2), ~~(width / 2), options.customString)
+        break;
       default:
         
     }
@@ -129,6 +133,16 @@ const gameOfLife = () => {
   }
   const changeGridColor = event => {
     renderer.changeColor('grid', event.target.value)
+  }
+  const changeFile = event => {
+    var file = event.target.files[0]
+    const reader = new FileReader()
+    reader.onload = function (target) {
+      options.customString = target.target.result
+      document.querySelector(options.switchPatternSelector).value = 'custom'
+      changePattern({target: {value: 'custom'}})
+    }
+    reader.readAsBinaryString(file)
   }
   const changeDeadColor = event => {
     renderer.changeColor('dead', event.target.value)
@@ -232,6 +246,11 @@ const gameOfLife = () => {
       selector: options.applySizeSelector,
       eventType: 'click',
       callback: setSize
+    },
+    {
+      selector: "#ctrl-file",
+      eventType: 'change',
+      callback: changeFile
     },
     {
       selector: options.switchPatternSelector,

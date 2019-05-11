@@ -10,6 +10,22 @@ function acorn (engine, i, j) {
   engine.set(i + 1, j + 5)
 }
 
+function custom (engine, i, j, pattern) {
+  console.log(pattern)
+  var x = 0, y = 0
+  for (var char of pattern) {
+    if (char == '\n') {
+      x = 0
+      y += 1
+      continue
+    }
+    if (char == 'O') {
+      engine.set(i + y, j + x)
+      console.log(x + ', ' + y)
+    }
+    x += 1
+  }
+}
 function ggg (engine, i, j) {
   const pattern = `........................O
 ......................O.O
@@ -77,5 +93,5 @@ function clear (engine, i, j) {
 }
 
 export {
-  acorn, cross, erase, point, random, clear, ggg
+  acorn, cross, erase, point, random, clear, ggg, custom
 }
