@@ -118,7 +118,9 @@ class Renderer {
         }
       }
     }
-    this.cellNode.textContent = `${alive}/${total} Alive`
+    var addon = ""
+    if (engine.getSteady()) addon = " Steady State!"
+    this.cellNode.textContent = `${alive}/${total} Alive${addon}`
     this.genNode.textContent = `Generation: ${this.genNumber}`
     // compute engine next step with appropriate frequency
     const engineElapsed = timeStamp - this.engineTime

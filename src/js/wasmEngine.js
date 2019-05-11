@@ -31,6 +31,10 @@ class WasmEngine {
     return this.module._cellUsed(i + 1, j + 1)
   }
 
+  getSteady () {
+    return this.module._getSteady()
+  }
+
   computeNextState () {
     this.module._computeNextState()
   }

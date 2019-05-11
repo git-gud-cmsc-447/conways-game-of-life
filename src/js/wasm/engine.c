@@ -7,6 +7,7 @@
 int width = 0;
 int height = 0;
 int doWrap = 1;
+int isSteady = 0;
 int live[] = {0,0,2,1,0,0,0,0,0};
 char *current;
 char *next;
@@ -126,8 +127,23 @@ void computeNextState () {
       /* } */
     }
   }
+  int steady = 1;
+  for (int i = 1; i < height_limit; i++) {
+    i_ = i * width;
+    if (steady == 0) break;
+    for (int j = 1; j < width_limit; j++) {
+      if (prev[i_ + j] != next[i_ + j]) {
+        steady = 0;
+        EM_ASM(
+          console.log("not steady");
+        );
+        break;
+      }
+    }
+  }
   memcpy(prev, current, width * height);
   memcpy(current, next, width * height);
+  isSteady = steady;
 }
 
 EMSCRIPTEN_KEEPALIVE
@@ -141,6 +157,11 @@ void set (int i, int j, int value) {
 EMSCRIPTEN_KEEPALIVE
 void setWrap (int value) {
     doWrap = value;
+}
+
+EMSCRIPTEN_KEEPALIVE
+int getSteady () {
+    return isSteady;
 }
 
 EMSCRIPTEN_KEEPALIVE
