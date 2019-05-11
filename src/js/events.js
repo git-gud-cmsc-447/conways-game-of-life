@@ -28,7 +28,6 @@ class MouseEventHandler {
       this.listeners.push(event)
       let target = document
       if (event.selector) {
-        alert("test")
         target = document.querySelector(event.selector)
       }
       if (target) {
@@ -48,6 +47,7 @@ class MouseEventHandler {
       j: ~~(mousePos.x / this.renderer.pixelsPerCell)
     }
     if (this.mouseDown || touch) {
+      console.log(mousePos)
       if (event.ctrlKey) {
         erase(this.engine, pos.i, pos.j)
       }
