@@ -142,10 +142,10 @@ const gameOfLife = () => {
     var newHeight = document.querySelector(options.ySizeSelector).value
     
     if (newWidth > 300 || newHeight > 300) {
-      alert("Error: exceeded max size")
+      alert("Error: value is too large (max size = 300)")
     }
     else if (newWidth < 2 || newHeight < 2) { 
-      alert("Error: exceeded min size")
+      alert("Error: value is too small (min size = 2) ")
     }
     else {  
       window.location.search = `width=${newWidth}&height=${newHeight}`
