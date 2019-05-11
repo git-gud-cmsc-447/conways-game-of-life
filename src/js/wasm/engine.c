@@ -26,6 +26,14 @@ int cell_index(int i, int j) {
     return i * width + j;
 }
 
+int translate_shit(int i) {
+    // I could explain this to you but it's better if you just pretend
+    //  like this doesn't exist
+    if (i == 2) i = 1;
+    if (i == 3) i = 0;
+    return i;
+}
+
 EMSCRIPTEN_KEEPALIVE
 char cell(int i, int j) {
   return current[cell_index(i, j)];
@@ -86,14 +94,14 @@ void computeNextState () {
       }
       j_m1 = j - 1;
       j_p1 = j + 1;
-      neighbors = current[i_m1 + j_m1];
-      neighbors += current[i_m1 + j];
-      neighbors += current[i_m1 + j_p1];
-      neighbors += current[i_+ j_m1];
-      neighbors += current[i_ + j_p1];
-      neighbors += current[i_p1 + j_m1];
-      neighbors += current[i_p1 + j];
-      neighbors += current[i_p1 + j_p1];
+      neighbors = translate_shit(current[i_m1 + j_m1]);
+      neighbors += translate_shit(current[i_m1 + j]);
+      neighbors += translate_shit(current[i_m1 + j_p1]);
+      neighbors += translate_shit(current[i_+ j_m1]);
+      neighbors += translate_shit(current[i_ + j_p1]);
+      neighbors += translate_shit(current[i_p1 + j_m1]);
+      neighbors += translate_shit(current[i_p1 + j]);
+      neighbors += translate_shit(current[i_p1 + j_p1]);
       switch (live[neighbors]) {
           case 1:
               // If we live or become alive we add ourselves to the trail
