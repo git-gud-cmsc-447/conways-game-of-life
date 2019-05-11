@@ -126,6 +126,7 @@ class Renderer {
       this.engine.computeNextState()
       for (var i = 0; i < this.skips; i++) {
         this.engine.computeNextState()
+        this.genNumber += 1
       }
       this.frameNumber += 1
       this.genNumber += 1
