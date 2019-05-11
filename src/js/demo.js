@@ -140,7 +140,16 @@ const gameOfLife = () => {
   const setSize = event => {
     var newWidth = document.querySelector(options.xSizeSelector).value
     var newHeight = document.querySelector(options.ySizeSelector).value
-    window.location.search = `width=${newWidth}&height=${newHeight}`
+    
+    if (newWidth > 300 || newHeight > 300) {
+      alert("Error: exceeded max size")
+    }
+    else if (newWidth < 2 || newHeight < 2) { 
+      alert("Error: exceeded min size")
+    }
+    else {  
+      window.location.search = `width=${newWidth}&height=${newHeight}`
+    }
   }
   const changeSpeed = event => {
     console.log(event)
