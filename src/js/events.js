@@ -37,6 +37,7 @@ class MouseEventHandler {
   }
 
   addCells (event, touch = false) {
+    console.log(event)
     const rect = this.canvas.getBoundingClientRect()
     const mousePos = {
       x: (event.clientX - rect.left) / (rect.right - rect.left) * this.canvas.width,
@@ -49,7 +50,14 @@ class MouseEventHandler {
     if (this.mouseDown || touch) {
       if (event.ctrlKey) {
         erase(this.engine, pos.i, pos.j)
-      } else {
+      }
+      else if (event.shiftKey) {
+
+      }
+      else if (event.altKey) {
+
+      }
+      else {
         //cross(this.engine, pos.i, pos.j)
         point(this.engine, pos.i, pos.j)
       }
