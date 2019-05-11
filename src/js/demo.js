@@ -158,10 +158,14 @@ const gameOfLife = () => {
   }
   const changeSkips = event => {
      if(event.target.value < 0) {
-      alert("test")
+      alert("Error: value is too large (min size = 0)")
     }
+    else if (event.target.value > 100) {
+      alert("Error: value is too large (max size = 100)")
+    }
+    else {
     renderer.changeSkips(event.target.value)
-   
+    }
       
   }
   const changeRuleSet = event => {
