@@ -160,6 +160,10 @@ const gameOfLife = () => {
       alert('Invalid File!')
       return
     }
+	if(file.type != "text"){
+		alert('Invalid File!')
+		return
+	}
     const reader = new FileReader()
     reader.onload = function (target) {
       options.customString = target.target.result
