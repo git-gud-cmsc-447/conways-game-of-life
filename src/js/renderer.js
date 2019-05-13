@@ -24,7 +24,7 @@ class Renderer {
     this.fps = 0
     this.frameNumber = 0
     this.skips = 0
-    this.alerted = False
+    this.alerted = false
 
     this.genNumber = 0
 
@@ -129,7 +129,7 @@ class Renderer {
       if (alive == 0 && !alerted) {
         alert("Game over: No cells are left alive")
         location.reload()
-        this.alerted = True
+        this.alerted = true
       }
       this.engine.computeNextState()
       for (var i = 0; i < this.skips; i++) {
