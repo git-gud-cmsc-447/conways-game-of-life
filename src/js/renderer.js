@@ -126,7 +126,7 @@ class Renderer {
     // compute engine next step with appropriate frequency
     const engineElapsed = timeStamp - this.engineTime
     if (engineElapsed > 1000 / this.desiredFPS && this.play) {
-      if (alive == 0 && !alerted) {
+      if (alive == 0 && !this.alerted) {
         alert("Game over: No cells are left alive")
         location.reload()
         this.alerted = true
