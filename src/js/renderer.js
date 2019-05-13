@@ -24,6 +24,7 @@ class Renderer {
     this.fps = 0
     this.frameNumber = 0
     this.skips = 0
+    this.alerted = False
 
     this.genNumber = 0
 
@@ -125,9 +126,10 @@ class Renderer {
     // compute engine next step with appropriate frequency
     const engineElapsed = timeStamp - this.engineTime
     if (engineElapsed > 1000 / this.desiredFPS && this.play) {
-      if (alive == 0) {
+      if (alive == 0 && !alerted) {
         alert("Game over: No cells are left alive")
         location.reload()
+        this.alerted = True
       }
       this.engine.computeNextState()
       for (var i = 0; i < this.skips; i++) {
